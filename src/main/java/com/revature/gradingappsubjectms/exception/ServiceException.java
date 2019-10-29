@@ -1,9 +1,8 @@
-package com.revature.gradingappsubject.exception;
+package com.revature.gradingappsubjectms.exception;
 
 public class ServiceException extends Exception {
-
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
