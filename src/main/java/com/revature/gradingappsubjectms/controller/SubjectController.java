@@ -1,10 +1,12 @@
 package com.revature.gradingappsubjectms.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -46,4 +48,22 @@ try {
      }
 } 
 
+	
+	@GetMapping("/subjectList")
+	@ApiOperation(value = "SubjectList API")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success", response = Subject.class),
+			@ApiResponse(code = 400, message = "Invalid Credentials", response = Message.class) })
+	public ResponseEntity<?> topbottom() throws ServiceException {
+
+		List<Subject> list = null;
+		String errorMessage = null;
+		list = subjectservice.subject();
+		Message message = null;
+		if (list != null) {
+			return new ResponseEntity<>(list, HttpStatus.OK);
+		} else {
+			message = new Message(errorMessage);
+			return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
+		}
+	}
 }

@@ -1,5 +1,6 @@
 package com.revature.gradingappsubjectms.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,5 +24,14 @@ public class SubjectService {
 		}
 		return subjectList;
 	}
+	
+	public List<Subject> subject() throws ServiceException {
+        List<Subject> list = null;
+        list = subjectrepository.findAll();
+        if (list == null)  {
+            throw new ServiceException(MessageConstant.INVALID);
+        }
+        return list;
+    }
 
 }
