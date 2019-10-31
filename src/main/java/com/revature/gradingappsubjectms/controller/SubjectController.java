@@ -53,7 +53,7 @@ try {
 	@ApiOperation(value = "SubjectList API")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success", response = Subject.class),
 			@ApiResponse(code = 400, message = "Invalid Credentials", response = Message.class) })
-	public ResponseEntity<?> topbottom() throws ServiceException {
+	public ResponseEntity<?> subjectList() throws ServiceException {
 
 		List<Subject> list = null;
 		String errorMessage = null;
